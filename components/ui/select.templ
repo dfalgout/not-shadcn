@@ -1,0 +1,17 @@
+package ui
+
+templ Select() {
+	<div class="relative max-w-xs" data-store="{open:false}">
+		<div data-text="$open"></div>
+		// <label for="dropdown" class="block text-sm font-medium text-gray-700">Choose an option</label>
+		<button id="dropdown" class="ds-select" data-on-click="$open=true">
+			Select an option
+		</button>
+		<div data-show="$open">Hidden</div>
+		// <ul data-show="$open">
+		// 	<li class="cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 hover:bg-indigo-600 hover:text-white" role="option">Option 1</li>
+		// 	<li class="cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 hover:bg-indigo-600 hover:text-white" role="option">Option 2</li>
+		// 	<li class="cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 hover:bg-indigo-600 hover:text-white" role="option">Option 3</li>
+		// </ul>
+	</div>
+}

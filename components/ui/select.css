@@ -1,0 +1,27 @@
+@layer components {
+  .ds-select {
+    @apply box-border m-0 border-r-0 transform-none font-bold max-w-full w-full rounded-md
+    border border-input bg-transparent px-3 py-1 text-sm text-foreground shadow-sm;
+
+    &:not([multiple]):not([size]) {
+      @apply align-middle block h-9;
+    }
+
+    &:not(select) {
+      @apply leading-9;
+    }
+
+    &[multiple],
+    &[size] {
+      @apply pt-1.5 pb-1.5 align-top min-h-[60px] py-2 resize-y pr-5;
+    }
+
+    &:focus {
+      @apply outline-none ring-1 ring-ring;
+    }
+
+    &:disabled {
+      @apply opacity-50;
+    }
+  }
+}

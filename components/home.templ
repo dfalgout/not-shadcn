@@ -1,0 +1,33 @@
+package components
+
+import "github.com/dfalgout/not-shadcn/components/ui"
+
+templ Home() {
+	@Index() {
+		<div class="h-screen">
+			Welcome!
+			<p>
+				<button class="ds-btn">Default</button>
+				<button class="ds-btn secondary">Secondary</button>
+				<button class="ds-btn destructive">Destructive</button>
+				<button class="ds-btn oline">Outline</button>
+				<button class="ds-btn link">Link</button>
+				<button class="ds-btn ghost">Ghost</button>
+				<button class="ds-btn icon outline">Icon</button>
+				<div class="ds-card max-w-64">
+					<div class="ds-card-header">
+						<div class="ds-card-title">Title</div>
+						<div class="ds-card-description">Description</div>
+					</div>
+					<div class="ds-card-content">
+						Content
+					</div>
+					<div class="ds-card-footer">
+						Footer
+					</div>
+				</div>
+				@ui.Select()
+			</p>
+		</div>
+	}
+}

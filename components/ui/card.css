@@ -1,0 +1,24 @@
+@layer components {
+  .ds-card {
+    @apply rounded-xl border bg-card text-card-foreground shadow;
+    & > .ds-card-header {
+      @apply flex flex-col space-y-1.5 p-6;
+
+      & > .ds-card-title {
+        @apply font-semibold leading-none tracking-tight;
+      }
+
+      & > .ds-card-description {
+        @apply text-sm text-muted-foreground;
+      }
+    }
+
+    & > .ds-card-content {
+      @apply p-6 pt-0;
+    }
+
+    & > .ds-card-footer {
+      @apply flex items-center p-6 pt-0;
+    }
+  }
+}
