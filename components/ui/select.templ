@@ -1,17 +1,59 @@
 package ui
 
-templ Select() {
-	<div class="relative max-w-xs" data-store="{open:false}">
-		<div data-text="$open"></div>
-		// <label for="dropdown" class="block text-sm font-medium text-gray-700">Choose an option</label>
-		<button id="dropdown" class="ds-select" data-on-click="$open=true">
-			Select an option
+import "fmt"
+
+type SelectItem struct {
+	Text  string
+	Value string
+}
+
+type SelectProps struct {
+	Items       []SelectItem
+	Selected    *SelectItem
+	Placeholder string
+}
+
+templ Select(props SelectProps) {
+	<div class="relative inline-block h-9 w-64" data-store={ fmt.Sprintf(`{open:false,selected:"%s"}`, props.Placeholder) }>
+		<button
+			id="select-button"
+			class="flex items-center justify-between w-full bg-background text-foreground border border-input rounded-md shadow-sm px-4 py-2 text-left cursor-pointer focus:outline-none focus:ring-1 focus:ring-ring ring-offset-background focus:ring-primary-500 focus:border-primary-500 [&>span]:line-clamp-1"
+			aria-haspopup="true"
+			aria-expanded="false"
+			data-on-click="$open=!$open"
+		>
+			<span id="selected-option" class="block truncate text-sm" data-text="$selected"></span>
+			<svg
+				class="h-4 w-4 opacity-50 pointer-events-none"
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 20 20"
+				fill="currentColor"
+			>
+				<path
+					fill-rule="evenodd"
+					d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+					clip-rule="evenodd"
+				></path>
+			</svg>
 		</button>
-		<div data-show="$open">Hidden</div>
-		// <ul data-show="$open">
-		// 	<li class="cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 hover:bg-indigo-600 hover:text-white" role="option">Option 1</li>
-		// 	<li class="cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 hover:bg-indigo-600 hover:text-white" role="option">Option 2</li>
-		// 	<li class="cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 hover:bg-indigo-600 hover:text-white" role="option">Option 3</li>
-		// </ul>
+		<ul
+			id="select-options"
+			class="absolute z-10 mt-1 px-2 py-2 w-full bg-background border rounded-md shadow-lg text-foreground focus:outline-none"
+			role="menu"
+			aria-labelledby="select-button"
+			data-show="$open"
+		>
+			for k, v := range props.Items {
+				<li
+					class="relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none focus:bg-accent focus:text-accent-foreground hover:bg-accent hover:text-accent-foreground"
+					role="menuitem"
+					id={ v.Value }
+					tabindex={ string(k) }
+					data-on-click={ fmt.Sprintf(`$selected="%s";$open=!$open`, v.Text) }
+				>
+					{ v.Text }
+				</li>
+			}
+		</ul>
 	</div>
 }

@@ -43,15 +43,31 @@ func Home() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"h-screen\">Welcome!<p><button class=\"ds-btn\">Default</button> <button class=\"ds-btn secondary\">Secondary</button> <button class=\"ds-btn destructive\">Destructive</button> <button class=\"ds-btn oline\">Outline</button> <button class=\"ds-btn link\">Link</button> <button class=\"ds-btn ghost\">Ghost</button> <button class=\"ds-btn icon outline\">Icon</button><div class=\"ds-card max-w-64\"><div class=\"ds-card-header\"><div class=\"ds-card-title\">Title</div><div class=\"ds-card-description\">Description</div></div><div class=\"ds-card-content\">Content</div><div class=\"ds-card-footer\">Footer</div></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"h-screen\">Welcome!<div class=\"flex flex-col gap-4\"><div><button class=\"ds-btn\">Default</button> <button class=\"ds-btn secondary\">Secondary</button> <button class=\"ds-btn destructive\">Destructive</button> <button class=\"ds-btn oline\">Outline</button> <button class=\"ds-btn link\">Link</button> <button class=\"ds-btn ghost\">Ghost</button> <button class=\"ds-btn icon outline\">Icon</button></div><div class=\"ds-card max-w-64\"><div class=\"ds-card-header\"><div class=\"ds-card-title\">Title</div><div class=\"ds-card-description\">Description</div></div><div class=\"ds-card-content\">Content</div><div class=\"ds-card-footer\">Footer</div></div><div class=\"flex justify-center w-full\"><div class=\"w-full max-w-xs\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = ui.Select().Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = ui.Select(ui.SelectProps{
+				Items: []ui.SelectItem{
+					{
+						Text:  "Option 1",
+						Value: "option1",
+					},
+					{
+						Text:  "Option 2",
+						Value: "option2",
+					},
+					{
+						Text:  "Option 3",
+						Value: "option3",
+					},
+				},
+				Placeholder: "Select One",
+			}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
