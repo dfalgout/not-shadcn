@@ -20,6 +20,9 @@
     &.link {
       @apply text-primary underline-offset-4 hover:underline;
     }
+    &.icon {
+      @apply text-primary underline-offset-4 hover:underline;
+    }
     /* sizes */
     &:where(:not(&.sm, &.lg, &.icon)) {
       @apply h-9 px-4 py-2;
